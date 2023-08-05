@@ -26,9 +26,9 @@ const LandingPage = () => {
     return (
         <div className="container">
 
-            {/* navbar section */}
+            {/* categories section */}
             <div>
-                <nav class="navbar navbar-expand-lg bg-body-tertiary mt-3">
+                <nav class="navbar navbar-expand-lg bg-danger-subtle mt-3">
                     <div class="container-fluid row justify-content-center">
 
                         <ul class="navbar-nav row col-10 justify-content-center">
@@ -121,7 +121,7 @@ const LandingPage = () => {
             </div>
 
             {/*best selling products section */}
-            <div className="container bg-secondary-subtle rounded-3">
+            <div className="container bg-secondary-subtle rounded-3 bg-warning-subtle">
                 <span className="m-5 fs-3 fw-bold">Best Selling Products</span>
                 <div className="p-4">
 
@@ -170,23 +170,21 @@ const LandingPage = () => {
 
             {/*footer section */}
             <div>
-                <nav class="mt-4 navbar navbar-expand-lg bg-body-tertiary">
-                    <div class="container-fluid">
+                <nav class="mt-4 navbar navbar-expand-lg bg-body-secondary">
 
+                    <div class="container justify-content-around" id="navbarNav">
 
-                        <div class="container justify-content-center" id="navbarNav">
-                            <ul class="row  navbar-nav">
-                                <li class="col-auto nav-item" href="#">About Us</li>
-                                <li class="col-auto nav-item">
-                                    <a class="nav-link" href="#">Home</a>
-                                </li>
-                                <li class="col-auto nav-item">
-                                    <a class="nav-link" href="#">Features</a>
-                                </li>
+                        <span class="col-auto nav-item" href="#">
+                            <a class="nav-link" href="#">About Us</a></span>
+                        <span class="col-auto nav-item">
+                            <a class="nav-link" href="#">Social Media</a>
+                        </span>
+                        <span class="col-auto nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </span>
 
-                            </ul>
-                        </div>
                     </div>
+
                 </nav>
             </div>
 
