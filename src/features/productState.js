@@ -23,6 +23,8 @@ export const productSlice = createSlice({
     }
 });
 
+console.log(products)
+
 export const { getProductsFailure, getProductsFetch, getProductsSuccess } = productSlice.actions;
 
 export default productSlice.reducer;
