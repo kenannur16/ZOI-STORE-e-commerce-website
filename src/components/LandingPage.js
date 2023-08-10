@@ -2,8 +2,29 @@ import React from "react";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { useGetProductsQuery } from "../features/mainSlice";
+import { useSelector, useDispatch } from 'react-redux'
 
 const LandingPage = () => {
+
+    const product = useSelector((state) => state.productsApi)
+    const dispatch = useDispatch()
+
+
+    const { data, error, isLoading } = useGetProductsQuery();
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>;
+    }
+
+
+
+
+
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -28,27 +49,27 @@ const LandingPage = () => {
 
             {/* categories section */}
             <div>
-                <nav class="navbar navbar-expand-lg bg-danger-subtle mt-3">
-                    <div class="container-fluid row justify-content-center">
+                <nav className="navbar navbar-expand-lg bg-danger-subtle mt-3">
+                    <div className="container-fluid row justify-content-center">
 
-                        <ul class="navbar-nav row col-10 justify-content-center">
-                            <li class="nav-item col-auto mx-2 justify-content-center">
-                                <a class="nav-link" aria-current="page" href="#">Smartphones</a>
+                        <ul className="navbar-nav row col-10 justify-content-center">
+                            <li className="nav-item col-auto mx-2 justify-content-center">
+                                <a className="nav-link" aria-current="page" href="#">Smartphones</a>
                             </li>
-                            <li class="nav-item col-auto mx-2 justify-content-center">
-                                <a class="nav-link" href="#">Laptops</a>
+                            <li className="nav-item col-auto mx-2 justify-content-center">
+                                <a className="nav-link" href="#">Laptops</a>
                             </li>
-                            <li class="nav-item col-auto mx-2 justify-content-center">
-                                <a class="nav-link" href="#">Fragrances</a>
+                            <li className="nav-item col-auto mx-2 justify-content-center">
+                                <a className="nav-link" href="#">Fragrances</a>
                             </li>
-                            <li class="nav-item col-auto mx-2 justify-content-center">
-                                <a class="nav-link" href="#" >Home-Decoration</a>
+                            <li className="nav-item col-auto mx-2 justify-content-center">
+                                <a className="nav-link" href="#" >Home-Decoration</a>
                             </li>
-                            <li class="nav-item col-auto mx-2 justify-content-center">
-                                <a class="nav-link" href="#" >Groceries</a>
+                            <li className="nav-item col-auto mx-2 justify-content-center">
+                                <a className="nav-link" href="#" >Groceries</a>
                             </li>
-                            <li class="nav-item col-auto mx-2 justify-content-center">
-                                <a class="nav-link" href="#" >Skincare</a>
+                            <li className="nav-item col-auto mx-2 justify-content-center">
+                                <a className="nav-link" href="#" >Skincare</a>
                             </li>
 
                         </ul>
@@ -126,42 +147,14 @@ const LandingPage = () => {
                 <div className="p-4">
 
                     <Carousel responsive={responsive}>
-                        <div className="card mx-3">
-                            <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        {product.map((prd) => (
+                            <div className="card mx-3" key={prd.id}>
+                                <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <p className="card-text">{prd.title}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="card mx-3">
-                            <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div className="card mx-3">
-                            <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div className="card mx-3">
-                            <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div className="card mx-3">
-                            <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
-                        <div className="card mx-3">
-                            <img src="https://picsum.photos/200/200" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                        </div>
+                        ))}
 
                     </Carousel>
                 </div>
@@ -170,17 +163,17 @@ const LandingPage = () => {
 
             {/*footer section */}
             <div>
-                <nav class="mt-4 navbar navbar-expand-lg bg-body-secondary">
+                <nav className="mt-4 navbar navbar-expand-lg bg-body-secondary">
 
-                    <div class="container justify-content-around" id="navbarNav">
+                    <div className="container justify-content-around" id="navbarNav">
 
-                        <span class="col-auto nav-item" href="#">
-                            <a class="nav-link" href="#">About Us</a></span>
-                        <span class="col-auto nav-item">
-                            <a class="nav-link" href="#">Social Media</a>
+                        <span className="col-auto nav-item" href="#">
+                            <a className="nav-link" href="#">About Us</a></span>
+                        <span className="col-auto nav-item">
+                            <a className="nav-link" href="#">Social Media</a>
                         </span>
-                        <span class="col-auto nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                        <span className="col-auto nav-item">
+                            <a className="nav-link" href="#">Contact</a>
                         </span>
 
                     </div>

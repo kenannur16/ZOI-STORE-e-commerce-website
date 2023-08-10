@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const productSlice = createSlice({
+const productSlice = createSlice({
     name: 'products',
     initialState: {
         products: [],
@@ -23,7 +23,6 @@ export const productSlice = createSlice({
     }
 });
 
-console.log(products)
 
 export const { getProductsFailure, getProductsFetch, getProductsSuccess } = productSlice.actions;
 

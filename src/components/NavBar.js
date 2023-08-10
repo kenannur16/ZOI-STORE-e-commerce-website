@@ -2,6 +2,7 @@ import React from "react";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const NavBar = () => {
+
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid row">
