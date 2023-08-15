@@ -12,6 +12,10 @@ const LandingPage = () => {
 
 
     const { data, error, isLoading } = useGetProductsQuery();
+    console.log("Data:", data);
+    console.log("Error:", error);
+    console.log("Loading:", isLoading);
+
 
     if (isLoading) {
         return <div>Loading...</div>;
